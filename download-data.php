@@ -1,7 +1,8 @@
 <?php
+require_once('private.config.php');
 require_once('utils.php');
 
-$conn = open_database_connection();
+$conn = open_database_connection($config);
 
 //$user_data = grab_data($conn, 'Users');
 //$mentor_data = grab_data($conn, 'Mentors');
