@@ -75,17 +75,33 @@
 		}
 
 		$conn = open_database_connection($config);
-		$add_statment = $conn->prepare("INSERT INTO Users(email, keywords, location, name, phone, foi, notes) 
+		$mentee_add_statment = $conn->prepare("INSERT INTO 
+						Users(email, keywords, location, name, phone, foi, notes) 
 						VALUES(?, ?, ?, ?, ?, ?, ?)");
-		$email_check = $conn->prepare("SELECT COUNT(*) AS count FROM `Users` WHERE email = '?'");
+		$mentor_add_statment = $conn->prepare("INSERT INTO 
+						Mentors(email, keywords, name, phone, industry, 
+							jobtitle, currentcompany, notes, location) 
+						VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
+		$mentee_email_check = $conn->prepare("SELECT COUNT(*) AS count FROM `Users` WHERE email = '?'");
+		$mentor_email_check = $conn->prepare("SELECT COUNT(*) AS count FROM `Mentors` WHERE email = '?'");
 
-		$email_check_result = $email_check->execute(array($data["email"]));
+		$mentor_email_check_result = $mentor_email_check->execute(array($data["email"]));
+		$mentee_email_check_result = $mentee_email_check->execute(array($data["email"]));
 
-		if($email_check_result[0]["count"] == 0) {
+		if($mentor_email_check_result[0]["count"] === 0 && $mentee_email_check_result[0]["count"] === 0) {
 			$file = file_get_contents("keywords.json");
 			$keywords = json_decode($file, true);
 
-			$user_input = $data["foi"] . " " . $data["message"];
+			if(empty($data["job_title"])) {
+				$user_input = $data["foi"] . " " . $data["message"];
+			}
+			else {
+				$user_input =   $data["job_title"] . " " .
+								$data["industry"] . " " .
+								$data["current_company"] . " " . 
+								$data["message"];
+			}
+			
 
 			$user_input = clean($user_input);
 
@@ -102,15 +118,30 @@
 				}
 			}
 
-			$add_statment->execute(array(
-											htmlspecialchars($data["email"]),
-											implode(",", $user_keyword_data),
-											htmlspecialchars($data["zip"]),
-											htmlspecialchars($data["name"]),
-											htmlspecialchars($data["phone"]),
-											htmlspecialchars($data["foi"]),
-											htmlspecialchars($data["message"])
-								   ));
+			if(empty($data["job_title"])) {
+				$mentee_add_statment->execute(array(
+												htmlspecialchars($data["email"]),
+												implode(",", $user_keyword_data),
+												htmlspecialchars($data["zip"]),
+												htmlspecialchars($data["name"]),
+												htmlspecialchars($data["phone"]),
+												htmlspecialchars($data["foi"]),
+												htmlspecialchars($data["message"])
+									   ));
+			} 
+			else {
+				$mentor_add_statment->execute(array(
+												htmlspecialchars($data["email"]),
+												implode(",", $user_keyword_data),
+												htmlspecialchars($data["name"]),
+												htmlspecialchars($data["phone"]),
+												htmlspecialchars($data["industry"]),
+												htmlspecialchars($data["job_title"]),
+												htmlspecialchars($data["current_company"]),
+												htmlspecialchars($data["message"]),
+												htmlspecialchars($data["zip"])
+									   ));
+			}
 
 			$headers = 'MIME-Version: 1.0' . "\r\n" .
 						'Content-type: text/html; charset=UTF-8' . "\r\n" .
