@@ -3022,3 +3022,40 @@ p.drop-cap.round:first-letter {
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
+
+
+
+/* MENTOR DATA OUTPUT - START */
+
+.mentor-info {
+	display: block;
+	float: left;
+	clear: both;
+	padding: 12px;
+	margin-bottom: 12px;
+	border: 1px solid #ededed;
+
+	width: 100%;
+
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+
+	
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-o-border-radius: 3px;
+	border-radius: 3px;
+
+	color: #888;
+
+	-webkit-transition: color 0.3s, border-color 0.3s;
+    -moz-transition: color 0.3s, border-color 0.3s;
+    -o-transition: color 0.3s, border-color 0.3s;
+    transition: color 0.3s, border-color 0.3s;
+}
+
+.mentor-info:focus {
+	border-color: #ccc;
+	
+}/* MENTOR DATA OUTPUT - END */
