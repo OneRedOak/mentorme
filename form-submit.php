@@ -21,67 +21,45 @@
 
 	//print_r($data);
 
-	if( isset($data) && $data['contact_site'] == '' )
-	{
-		foreach ($data as $key => $value)
-		{
-			if($key != 'contact_site')
-			{
-				if($key == 'email')
-				{
-					if(!filter_var($value, FILTER_VALIDATE_EMAIL))
-					{
+	if( isset($data) && $data['contact_site'] == '' ) {
+		foreach ($data as $key => $value) {
+			if($key != 'contact_site') {
+				if($key == 'email') {
+					if(!filter_var($value, FILTER_VALIDATE_EMAIL)) {
 						error($validation_messages['invalid_email'], $key);
-					}
-					else
-					{
+					} else {
 						$sender = $value;
 					}
-				}
-				else
-				{
-					switch ($key)
-					{
+				} else {
+					switch ($key) {
 						case 'name':
-							if(_is_valid_field($value) )
-							{
+							if(_is_valid_field($value) ) {
 								$sender_name = $value;
-							} 
-							else
-							{
+							} else {
 								error($validation_messages['invalid_name'], $key);
 							}
 							break;
 
 						case 'message':
-							if($value != '')
-							{
+							if($value != '') {
 								$message = $value;
-							}
-							else
-							{
+							} else {
 								error($validation_messages['empty_message'], $key);
 							}
 							break;
 
 						case 'subject':
-							if($value != '')
-							{
+							if($value != '') {
 								$subject = $value;
-							}
-							else
-							{
+							} else {
 								error($key . ' ' . $validation_messages['empty_field'] , $key);
 							}
 							break;
 
 						default:
-							if($value != '')
-							{
+							if($value != '') {
 								$additional = "\r\n" . '<br><br><hr style="border: none; border-top: 1px solid #ededed;">' . $key . ': ' . $value;
-							}
-							else
-							{
+							} else {
 								error($key . ' ' . $validation_messages['empty_field'] , $key);
 							}
 							break;
@@ -135,16 +113,11 @@
 			error($validation_messages['global_error'], 'global');
 		}*/
 
-	}
-	else
-	{
+	} else {
 		error($validation_messages['spam_bot'], 'global');
 	}
 
-
-
-	function error($text, $field)
-	{
+	function error($text, $field) {
 		die(
 			json_encode(
 				array(
@@ -155,8 +128,7 @@
 		);
 	}
 
-	function success($text)
-	{
+	function success($text) {
 		die(
 			json_encode(
 				array(
