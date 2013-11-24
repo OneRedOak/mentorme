@@ -315,7 +315,7 @@
 
 					<div class="block one-half last">
 						
-						<form action="form-submit.php" method="post" id="contact-form" class="contact-form">
+						<form action="form-submit.php" method="post" id="contact-form" class="contact-form" onsubmit="revealData();">
 							
 							<label for="name">Name*</label>
 							<input placeholder="Name*" id="name" type="text" name="name">
@@ -382,82 +382,6 @@
 
 
 
-		<section id="contacts-mentor" class="contacts-template">
-			<div class="section-holder">
-				<div class="heading">
-					<h1>Mentor Signup</h1>
-					<nav>
-
-						<div class="section-info">
-							
-						</div>
-						<!--end filter-->
-					</nav>
-				</div>
-				<!--end heading-->
-
-				<div class="content">
-
-					<div class="block one-half">
-						<div class="contacts-info">
-							<p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
-							<br>
-							<p>Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio.</p>
-							<br>
-							<a class="social-icon" href="http://dribbble.com">
-								<img src="resources/images/social/dribbble.png" alt="dribbble"/>
-							</a>
-							<a class="social-icon" href="http://twitter.com">
-								<img src="resources/images/social/twitter.png" alt="twitter"/>
-							</a>
-						</div>
-					</div>
-
-					<div class="block one-half last">
-						
-						<form action="form-submit.php" method="post" id="contact-form" class="contact-form">
-							
-							<label for="name">Name*</label>
-							<input placeholder="Name*" id="name" type="text" name="name">
-
-
-							<label for="email">Email*</label>
-							<input placeholder="Email*" id="email" type="text" name="email">
-
-
-							<label for="email">Phone*</label>
-							<input placeholder="Phone*" id="phone" type="text" name="phone">
-
-							<label for="email">Zip Code (5-Digits)*</label>
-							<input placeholder="Zip Code*" id="zip" type="text" name="zip">
-
-							<label for="email">Industry*</label>
-							<input placeholder="Industry*" id="industry" type="text" name="industry">										
-							<label for="email">Job Title*</label>
-							<input placeholder="Job Title*" id="job_title" type="text" name="job_title">
-
-							<label for="email">Current Company*</label>
-							<input placeholder="Current Company*" id="current_company" type="text" name="current_company">	
-
-							<label for="message">Additional Notes?*</label>
-							<textarea placeholder="Additional Notes?" id="message" name="message"></textarea>
-							<input id="submit" type="submit" value="Send">
-						</form>
-					</div>
-
-
-				</div>
-			</div>
-			<!--end section-holder-->
-			<div class="google-map" data-latitude="-37.81677" data-longitude="144.964956" data-type="ROADMAP" data-zoom="16" data-pointer-title="Hey, We're Here!"></div>
-		</section>
-		<!--END MENTOR CONTACTS-->
-
-
-
-
-
-
 
 
 
@@ -499,5 +423,11 @@
 			<!--end footer-container-->
 		</footer>
 		<!--END FOOTER-->
+        
+        <script type="text/javascript">
+            function revealData() {
+                document.getElementById('mentor-data-container').style.display = 'block';
+            }
+        </script>
 	</body>
 </html>
