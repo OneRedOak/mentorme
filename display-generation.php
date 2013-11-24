@@ -122,6 +122,12 @@ function generate_custom_matches_html($mentors, $extras) {
     
     array_push($row, '<ol class="mentors">');
     
+    $images = array(
+        'resources/mentors/pic1.jpg',
+        'resources/mentors/pic2.jpg',
+        'resources/mentors/pic3.jpg',
+        'resources/mentors/pic4.jpg');
+    
     $counter = 0;
     foreach ($mentors as $mentor_pair) {
         $score = $mentor_pair['score'];
@@ -129,13 +135,19 @@ function generate_custom_matches_html($mentors, $extras) {
         $extra = $extras[$counter];
             
         array_push($row, '<li class="mentor">');
+        array_push($row, '<img src="' . $images[$counter] . '" height="150" width="150" class="mentor-info profile-pic">');
         array_push($row, wrap_span('mentor-info name',  $mentor->name));
         array_push($row, wrap_span('mentor-info job', $extra['job_title']));
         array_push($row, wrap_span('mentor-info company', $extra['company']));
-        array_push($row, wrap_span('mentor-info info', $extra['notes']));
-        array_push($row, wrap_span('mentor-info keywords',  $mentor->pretty_keywords()));
+        // Display on main page fails when the below single line is kept -- the 
+        // function ends up returning null (??)
+        // However, it works on view-matches.php
+        //array_push($row, wrap_span('mentor-info info', htmlspecialchars($extra['notes'])));
+        //array_push($row, wrap_span('mentor-info keywords',  $mentor->pretty_keywords()));
         
         array_push($row, '</li>');
+        
+        $counter = $counter + 1;
     }
     array_push($row, '</ol>');
     

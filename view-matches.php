@@ -39,15 +39,7 @@ function grab_similarities($config, $amount, $distance_threshold) {
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-<style type="text/css">
-    .user-info{
-        display:block;
-    }
-    
-    .mentor-info{
-        display:block;
-    }
-</style>
+<link rel="stylesheet" href="resources/css/style.css" type="text/css" />
 
 </head>
 <body>

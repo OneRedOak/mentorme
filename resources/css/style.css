@@ -2455,14 +2455,6 @@ a.load-more:hover {
 
 
 
-/* Mentor data */
-
-#mentor_data_container{
-    display:none;
-}
-
-
-
 
 
 
@@ -3030,15 +3022,58 @@ p.drop-cap.round:first-letter {
 
 /* MENTOR DATA OUTPUT - START */
 
-.mentor-info {
+
+/* Mentor data */
+
+#mentor_data_container{
+    display:none;
+}
+
+
+.mentors{
+    display:block;
+    list-style-type:none;
+    margin:0 auto;
+}
+
+/* clearfix */
+
+.mentors:before,
+.mentors:after {
+    content: " "; 
+    display: table; 
+}
+
+.mentors:after {
+    clear: both;
+}
+
+/* end clearfix */
+
+.mentor-info,
+.user-info{
+    display:block;
+    text-align:center;
+}
+
+.mentor .name{
+    font-size:20px;
+    color:rgb(236, 67, 22);
+}
+
+.mentor .profile-pic{
+    margin:0 auto 5px;
+}
+
+.mentor {
 	display: block;
 	float: left;
-	clear: both;
 	padding: 12px;
 	margin-bottom: 12px;
+    margin-right:24px;
 	border: 1px solid #ededed;
-
-	width: 100%;
+    background-color:#ededed;
+    width:200px;
 
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
@@ -3058,7 +3093,7 @@ p.drop-cap.round:first-letter {
     transition: color 0.3s, border-color 0.3s;
 }
 
-.mentor-info:focus {
+.mentor:focus {
 	border-color: #ccc;
 	
 }/* MENTOR DATA OUTPUT - END */
