@@ -12,13 +12,21 @@ function getLnt($zip){
 	return $result3[0];
 }
 
-function getDistance($zip1, $zip2){
-	$first_lat = getLnt($zip1);
-	$next_lat = getLnt($zip2);
-	$lat1 = $first_lat['lat'];
+function getDistance($person1, $person2){
+	//$first_lat = getLnt($zip1);
+	//$next_lat = getLnt($zip2);
+    
+    
+	/*$lat1 = $first_lat['lat'];
 	$lon1 = $first_lat['lng'];
 	$lat2 = $next_lat['lat'];
-	$lon2 = $next_lat['lng']; 
+	$lon2 = $next_lat['lng']; */
+    
+    $lat1 = $person1->latitude;
+    $lon1 = $person1->longitude;
+    $lat2 = $person2->latitude;
+    $lon2 = $person2->longitude;
+    
 	$theta=$lon1-$lon2;
 	$dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +
 	cos(deg2rad($lat1)) * cos(deg2rad($lat2)) *

@@ -33,7 +33,7 @@ class Person
         $output = array();
         
         foreach ($others as $other) {
-            if (getDistance($this->location, $other->location) <= $distance_threshold) {
+            if (getDistance($this, $other) <= $distance_threshold) {
                 array_push($output, $other);
             }
         }

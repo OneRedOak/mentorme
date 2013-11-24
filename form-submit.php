@@ -2,6 +2,7 @@
 	require_once("private.config.php");
 	require_once("utils.php");
 	require_once('ranking.php');
+    require_once('location.php');
 	require_once('display-generation.php');
 
 	$data = $_POST;
@@ -75,12 +76,12 @@
 
 		$conn = open_database_connection($config);
 		$mentee_add_statment = $conn->prepare("INSERT INTO 
-						Users(email, keywords, location, name, phone, foi, notes) 
-						VALUES(?, ?, ?, ?, ?, ?, ?)");
+						Users(email, keywords, location, name, phone, foi, notes, latitude, longitude) 
+						VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
 		$mentor_add_statment = $conn->prepare("INSERT INTO 
 						Mentors(email, keywords, name, phone, industry, 
-							jobtitle, currentcompany, notes, location) 
-						VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
+							jobtitle, currentcompany, notes, location, latitude, longitude) 
+						VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 		
 
 		$file = file_get_contents("keywords.json");
@@ -113,6 +114,10 @@
 		}
 
 		if(empty($data["job_title"])) {
+            $loc = getLnt(htmlspecialchars($data['zip']));
+            $lat = $loc['lat'];
+            $lon = $loc['lng'];
+            
 			$mentee_add_statment->execute(array(
 											htmlspecialchars($data["email"]),
 											implode(",", $user_keyword_data),
@@ -120,10 +125,15 @@
 											htmlspecialchars($data["name"]),
 											htmlspecialchars($data["phone"]),
 											htmlspecialchars($data["foi"]),
-											htmlspecialchars($data["message"])
-								   ));
+											htmlspecialchars($data["message"]),
+                                            $lat,
+                                            $lon)
+								   );
 		} 
 		else {
+            $loc = getLnt(htmlspecialchars($data['zip']));
+            $lat = $loc['lat'];
+            $lon = $loc['lng'];
 			$mentor_add_statment->execute(array(
 											htmlspecialchars($data["email"]),
 											implode(",", $user_keyword_data),
@@ -133,8 +143,10 @@
 											htmlspecialchars($data["job_title"]),
 											htmlspecialchars($data["current_company"]),
 											htmlspecialchars($data["message"]),
-											htmlspecialchars($data["zip"])
-								   ));
+											htmlspecialchars($data["zip"]),
+                                            $lat,
+                                            $lon)
+								   );
 		}
 
 		$headers = 'MIME-Version: 1.0' . "\r\n" .
