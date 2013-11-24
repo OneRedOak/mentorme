@@ -2131,6 +2131,90 @@ a.load-more:hover {
 
 
 
+/* MEDIA GALLERY ADDITIONS */
+
+.media-gallery-large {
+	overflow: hidden;
+	display: block;
+	width: 100%;
+	list-style: none;
+	padding-left: 0;
+}
+
+.media-gallery-large li {
+	position: relative;
+	display: block;
+	width: 100%;
+	margin-right: 0%;
+	float: left;
+	margin-bottom: 24px;
+}
+
+.media-gallery-large li:before {
+	content: "";
+	display: block;
+	position: absolute;
+	width: 50%;
+	left: 0;
+	bottom: -16px;
+	height: 16px;
+	background: transparent url(../images/style/shadow-news.png) left -22px no-repeat;
+}
+
+.media-gallery-large li:after {
+	content: "";
+	display: block;
+	position: absolute;
+	width: 50%;
+	right: 0;
+	bottom: -16px;
+	height: 16px;
+	background: transparent url(../images/style/shadow-news.png) right -22px no-repeat;
+}
+
+
+
+
+
+
+
+
+.media-gallery-large li:nth-child(3n+0) {
+	margin-right: 0;
+}
+
+.media-gallery-large li a, .media-gallery li img {
+	display: block;
+}
+
+.media-gallery-large li a {
+	position: relative;
+}
+
+.media-gallery-large li > a img {
+	width: 100%;
+}
+
+.media-gallery-large li a:hover img {
+	
+}
+
+.media-gallery-large li a:hover .hover-element {
+	transform: scale(1,1);
+	-ms-transform: scale(1,1); /* IE 9 */
+	-webkit-transform: scale(1,1); /* Safari and Chrome */
+	-o-transform: scale(1,1); /* Opera */
+	-moz-transform: scale(1,1); /* Firefox */
+
+	opacity: 1;
+}
+
+
+
+
+
+
+
 
 
 
