@@ -2254,7 +2254,7 @@
 							//$("#match_results_cover").hide();
 							//$("#match_results_cover").show();
 							$("#mentor_data").html(_data.message);
-							scrollto($("#mentor_data_container"));
+							scrollto($("#scrole_to"));
 
 						}
 
