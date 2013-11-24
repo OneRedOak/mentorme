@@ -70,27 +70,28 @@
 			}
 		}
 
-		// database code here
-
+		
 		$file = file_get_contents("keywords.json");
-		$keywords = json_decode($string, true);
+		$keywords = json_decode($file, true);
 
-		$user_input = "I am a javascript and php developer who is hoping to get a job at microsoft or google";
+		$user_input = "I am a java and php developer who is hoping to get a job at microsoft or google";
 
 		$user_input = clean($user_input);
 
-		$user_input_array = explode(" ", $user_input);
+		$user_input_array = explode("-", $user_input);
 
 		$user_keyword_data = array(); 
 
-		for($user_input_word : $user_input) {
+		foreach($user_input_array as $user_input_word) {
 			$user_input_word = strtolower($user_input_word);
-			if(in_array($user_input_word, $keywords)) {
-				array_push($user_keyword_data, $user_input_word);
-			}	
+			foreach($keywords["Keywords"] as $keyword) {
+				if($user_input_word === $keyword) {
+					array_push($user_keyword_data, $keyword);	
+				}
+			}
 		}
 
-		print_r($user_keyword_data);
+		
 
 		$headers = 'MIME-Version: 1.0' . "\r\n" .
 					'Content-type: text/html; charset=UTF-8' . "\r\n" .
@@ -115,6 +116,12 @@
 
 	} else {
 		error($validation_messages['spam_bot'], 'global');
+	}
+
+	function clean($string) {
+		$string = str_replace(" ", "-", $string); // Replaces all spaces with hyphens.
+   		$string = preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
+		return preg_replace('/-+/', '-', $string); // Replaces multiple hyphens with single one.
 	}
 
 	function error($text, $field) {
