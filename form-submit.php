@@ -92,6 +92,28 @@
 			}
 		}
 
+		// database code here
+
+		$file = file_get_contents("keywords.json");
+		$keywords = json_decode($string, true);
+
+		$user_input = "I am a javascript and php developer who is hoping to get a job at microsoft or google";
+
+		$user_input = clean($user_input);
+
+		$user_input_array = explode(" ", $user_input);
+
+		$user_keyword_data = array(); 
+
+		for($user_input_word : $user_input) {
+			$user_input_word = strtolower($user_input_word);
+			if(in_array($user_input_word, $keywords)) {
+				array_push($user_keyword_data, $user_input_word);
+			}	
+		}
+
+		print_r($user_keyword_data);
+
 		$headers = 'MIME-Version: 1.0' . "\r\n" .
 					'Content-type: text/html; charset=UTF-8' . "\r\n" .
 					'From: ' . $sender_name . '<'. $sender .'>' ."\r\n" .
@@ -104,14 +126,14 @@
 
 		$to = $send_copy_to_sender ? $receiver . ', ' . $sender : $receiver;
 
-		if(mail($to, $subject, $complete_message, $headers))
+		/*if(mail($to, $subject, $complete_message, $headers))
 		{
 			success($validation_messages['success']);
 		}
 		else
 		{
 			error($validation_messages['global_error'], 'global');
-		}
+		}*/
 
 	}
 	else
