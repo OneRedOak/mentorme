@@ -26,7 +26,7 @@ function getDistance($zip1, $zip2){
 	$dist = acos($dist);
 	$dist = rad2deg($dist);
 	$miles = $dist * 60 * 1.1515;
-	return $miles." ".$unit;
+	return $miles;
 }
 
 ?>
