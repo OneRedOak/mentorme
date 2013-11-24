@@ -2244,17 +2244,17 @@
 							//	left: form.find('[type="submit"]').position().left + form.find('[type="submit"]').outerWidth(true) + 10
 							//});
 
-							//form.find(fields).val('');
+							form.find(fields).val('');
 
-							//tooltip.delay(4000).fadeOut('slow', function()
-							//{
-							//	$(this).remove();
-							//	form.find('[type="submit"]').removeAttr('disabled');
-							//});
-							scrollto($("#match_results_cover"));
+							tooltip.delay(4000).fadeOut('slow', function()
+							{
+								//$(this).remove();
+								form.find('[type="submit"]').removeAttr('disabled');
+							});
 							$("#match_results_cover").hide();
 							$("#match_results_cover").show();
 							$("#match_results").html(_data.message);
+							scrollto($("#match_results"));
 
 						}
 
