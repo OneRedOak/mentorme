@@ -106,7 +106,7 @@ function grab_custom_data($conn, $table_name) {
     foreach ($result as $row) {
         array_push($output,
             new Person($row['name'], $row['email'], $row['phone'], $row['location'], 
-                       $row['foi'], explode_and_trim(',', $row['keywords']),
+                       $row['foi'], explode_and_trim(',', $row['keywords']), 
                        $row['latitude'], $row['longitude']));
         array_push($extra, array(
             'job_title' => $row['jobtitle'],
@@ -126,7 +126,7 @@ function generate_custom_matches_html($mentors, $extras) {
     foreach ($mentors as $mentor_pair) {
         $score = $mentor_pair['score'];
         $mentor = $mentor_pair['mentor'];
-        $extra = $extras[0];
+        $extra = $extras[$counter];
             
         array_push($row, '<li class="mentor">');
         array_push($row, wrap_span('mentor-info name',  $mentor->name));
