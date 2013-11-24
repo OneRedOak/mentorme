@@ -71,6 +71,9 @@
 							<a href="#contacts">Signup</a>
 						</li>
 						<li>
+							<a href="#works">Meetup 101</a>
+						</li>
+						<li>
 							<a href="#">Prospective Mentor?</a>
 						</li>
 					</ul>
@@ -197,7 +200,7 @@
 
 
 
-		<section id="about" class=" ">
+		<section id="about" class="about-template inverse-color">
 			<div class="section-holder">
 				
 				<ul class="team-members">
@@ -366,11 +369,41 @@
 
 
 
-		<div id="match_results_cover">
-				<div class="content" id="match_results" style="padding-top:100px">
-					
+
+		<section id="works" class="works-template" data-source="works.html">
+			<div class="section-holder">
+				<div class="heading">
+					<h1>Meetup 101</h1>
 				</div>
-		</div>
+				<!--end heading-->
+				<div class="content">
+					<ul class="works-gallery">
+						<li data-tag="graphic-design, other" data-slug="quickresponse">
+							<a class="project-thumb to-project" href="project-01.html">
+								<img src="resources/images/works/thumbs/01.jpg" alt="">
+								<span class="hover-element"></span>
+							</a>
+							<nav class="project-details">
+								<ul class="project-nav">
+									<li>
+										<a class="category" href="#graphic-design">Graphic Design</a>
+									</li>
+									<li>
+										<a class="category" href="#other">Other</a>
+									</li>
+									<li>
+										<a class="to-project" href="project-01.html">Quickresponse</a>
+									</li>
+								</ul>
+							</nav>
+						</li>
+					</ul>
+				</div>
+				<!--end content-->
+				<a class="load-more" href="#more">+</a>
+			</div>
+			<!--end section-holder-->
+		</section>
 		<!--END WORKS-->
 
 
@@ -444,7 +477,6 @@
 
 							<label for="message">Additional Notes?*</label>
 							<textarea placeholder="Additional Notes?" id="message" name="message"></textarea>
-
 							<input id="submit" type="submit" value="Send">
 						</form>
 					</div>
