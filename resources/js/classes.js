@@ -2157,7 +2157,7 @@
 				var url = form.attr('action');
 				var data = form.find(fields).serialize();
 
-				
+				//console.log("here");				
 
 				form.find('[type="submit"]').attr('disabled', 'disabled');
 
@@ -2233,28 +2233,28 @@
 								$(this).remove();
 							});
 
-							//form.find(fields).css({
-							//	'border-color': ''
-							//});
-							//tooltip.attr('class', 'form-success message-box success');
-							//tooltip.html(_data.message);
-							//tooltip.hide().appendTo(form).fadeIn('fast');
-							//tooltip.css({
-							//	top: form.find('[type="submit"]').position().top,
-							//	left: form.find('[type="submit"]').position().left + form.find('[type="submit"]').outerWidth(true) + 10
-							//});
+							form.find(fields).css({
+								'border-color': ''
+							});
+							tooltip.attr('class', 'form-success message-box success');
+							tooltip.html(_data.message);
+							tooltip.hide().appendTo(form).fadeIn('fast');
+							tooltip.css({
+								top: form.find('[type="submit"]').position().top,
+								left: form.find('[type="submit"]').position().left + form.find('[type="submit"]').outerWidth(true) + 10
+							});
 
 							form.find(fields).val('');
 
 							tooltip.delay(4000).fadeOut('slow', function()
 							{
-								//$(this).remove();
+								$(this).remove();
 								form.find('[type="submit"]').removeAttr('disabled');
 							});
-							$("#match_results_cover").hide();
-							$("#match_results_cover").show();
-							$("#match_results").html(_data.message);
-							scrollto($("#match_results"));
+							//$("#match_results_cover").hide();
+							//$("#match_results_cover").show();
+							//$("#match_results").html(_data.message);
+							//scrollto($("#match_results"));
 
 						}
 
