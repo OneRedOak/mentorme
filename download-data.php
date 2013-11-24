@@ -1,6 +1,6 @@
 <?php
 require_once('private.config.php');
-require_once('database.php');
+require_once('utils.php');
 
 $conn = open_database_connection($config);
 
