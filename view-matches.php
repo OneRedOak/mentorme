@@ -61,10 +61,37 @@ function wrap_span($classes, $item) {
     return "<span class='{$classes}'>{$item}</span>";
 }
 
+function generate_user_matches_html($user, $mentors) {
+    $row = array();
+    
+    array_push($row, wrap_span('user-info name', $user->name));
+    array_push($row, wrap_span('user-info keywords',  $user->pretty_keywords()));
+    array_push($row, wrap_span('user-info location',  $user->location));
+    array_push($row, wrap_span('user-info email',  $user->email));
+    
+    array_push($row, '<ol class="mentors">');
+    
+    foreach ($mentors as $mentor_pair) {
+        $score = $mentor_pair['score'];
+        $mentor = $mentor_pair['mentor'];
+            
+        array_push($row, '<li class="mentor">');
+        array_push($row, wrap_span('mentor-info name',  $mentor->name));
+        array_push($row, wrap_span('mentor-info keywords',  $mentor->pretty_keywords()));
+        array_push($row, wrap_span('mentor-info location',  $mentor->location));
+        array_push($row, wrap_span('mentor-info email',  $mentor->email));
+        array_push($row, wrap_span('mentor-info score', $score));
+        array_push($row, '</li>');
+    }
+    array_push($row, '</ol>');
+    
+    return implode("\n", $row);
+}
+
 function generate_masterlist_html($similarities) {
     $output = array();
-    array_push($output, '<ul>');
     
+    array_push($output, '<ul>');
     foreach ($similarities as $pair) {
         $user = $pair['user'];
         $mentors = $pair['mentors'];
@@ -72,32 +99,11 @@ function generate_masterlist_html($similarities) {
         $row = array();
         
         array_push($row, '<li class="user">');
-        array_push($row, wrap_span('user-info name', $user->name));
-        array_push($row, wrap_span('user-info keywords',  $user->pretty_keywords()));
-        array_push($row, wrap_span('user-info location',  $user->location));
-        array_push($row, wrap_span('user-info email',  $user->email));
-        
-        array_push($row, '<ol class="mentors">');
-        
-        foreach ($mentors as $mentor_pair) {
-            $score = $mentor_pair['score'];
-            $mentor = $mentor_pair['mentor'];
-                
-            array_push($row, '<li class="mentor">');
-            array_push($row, wrap_span('mentor-info name',  $mentor->name));
-            array_push($row, wrap_span('mentor-info keywords',  $mentor->pretty_keywords()));
-            array_push($row, wrap_span('mentor-info location',  $mentor->location));
-            array_push($row, wrap_span('mentor-info email',  $mentor->email));
-            array_push($row, wrap_span('mentor-info score', $score));
-            array_push($row, '</li>');
-        }
-        array_push($row, '</ol>');
+        array_push($row, generate_user_matches_html($user, $mentors));
         array_push($row, '</li>');
         
         array_push($output, implode("\n", $row));
     }
-    
-    
     array_push($output, '</ul>');
     
     return implode("\n", $output);
