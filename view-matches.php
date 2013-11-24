@@ -35,17 +35,19 @@ function grab_similarities($config, $amount, $distance_threshold) {
 
 ?>
 <!DOCTYPE html>
-<html>
-<meta>
-    <style type="text/css">
-        .user-info{
-            display:block;
-        }
-        .mentor-info{
-            display:block;
-        }
-    </style>
-</meta>
+<html lang="en-US">
+<head>
+<style type="text/css">
+    .user-info{
+        display:block;
+    }
+    
+    .mentor-info{
+        display:block;
+    }
+</style>
+
+</head>
 <body>
     <h1>View Matches</h1>
     <p><a href="view-matches.php?csv=true">Download as csv</a></p>
