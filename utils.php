@@ -1,6 +1,6 @@
 <?php
 function open_database_connection($config) {
-    $conn = new mysqli(
+    $conn = mysqli_connect(
         $config['database_host'],
         $config['database_username'],
         $config['database_password'],

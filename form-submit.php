@@ -1,4 +1,7 @@
 <?php
+	require_once("private.config.php");
+	require_once("utils.php");
+
 	$data = $_POST;
 	$subject = 'Hello From ilone';
 	$receiver = 'myuser1@localhost';
