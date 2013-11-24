@@ -163,7 +163,7 @@
 
 		if(mail($to, $subject, $complete_message, $headers))
 		{
-            $loc = getLnt(htmlspecialchars($data['zip']));
+            $loc = getLnt($data['zip']);
             $lat = $loc['lat'];
             $lon = $loc['lng'];
             
@@ -176,6 +176,16 @@
 			    $user_keyword_data,  // keywords
                 $lat,
                 $lon);
+                
+            $test_user = new Person(
+                'Person name',
+                'email@example.com',
+                '425-123-1234',
+                '98020',
+                'field of interest - not currently used',
+                array('python', 'java', 'php'),
+                47.8040624,
+                -122.3735496);
 
 			$mentor_matches = generate_single_user_matches_html(
 			    $config, 
@@ -183,7 +193,7 @@
 			    4,    // max number of matches
 			    50);  // distance radius
 			$validation_messages['success'] = $mentor_matches;
-			success($validation_messages['success']);
+            success($validation_messages['success']);
 		}
 		else
 		{
