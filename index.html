@@ -68,10 +68,13 @@
 							<a href="#about">About</a>
 						</li>
 						<li>
+							<a href="#contacts">Signup</a>
+						</li>
+						<li>
 							<a href="#works">Meetup 101</a>
 						</li>
 						<li>
-							<a href="#contacts">Signup</a>
+							<a href="#">Prospective Mentor?</a>
 						</li>
 					</ul>
 					<!--end nav-->
@@ -337,6 +340,83 @@
 
 
 
+		<section id="contacts" class="contacts-template">
+			<div class="section-holder">
+				<div class="heading">
+					<h1>Signup!</h1>
+					<nav>
+
+						<div class="section-info">
+							
+						</div>
+						<!--end filter-->
+					</nav>
+				</div>
+				<!--end heading-->
+
+				<div class="content">
+
+					<div class="block one-half">
+						<div class="contacts-info">
+							<p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
+							<br>
+							<p>Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio.</p>
+							<br>
+							<a class="social-icon" href="http://dribbble.com">
+								<img src="resources/images/social/dribbble.png" alt="dribbble"/>
+							</a>
+							<a class="social-icon" href="http://twitter.com">
+								<img src="resources/images/social/twitter.png" alt="twitter"/>
+							</a>
+						</div>
+					</div>
+
+					<div class="block one-half last">
+						
+						<form action="form-submit.php" method="post" id="contact-form-mentee" class="contact-form">
+							
+							<label for="name">Name*</label>
+							<input placeholder="Name*" id="name" type="text" name="name">
+
+							<label for="email">Email*</label>
+							<input placeholder="Email*" id="email" type="text" name="email">
+
+							<label for="email">Phone*</label>
+							<input placeholder="Phone*" id="phone" type="text" name="phone">
+
+							<label for="email">Zip Code (5-Digits)*</label>
+							<input placeholder="Zip Code*" id="zip" type="text" name="zip">
+
+							<label for="email">Field of Interest*</label>
+							<input placeholder="Field of Interest*" id="foi" type="text" name="foi">
+
+							<label for="message">Any Additional Notes?*</label>
+							<textarea placeholder="Any Additional Notes?" id="message" name="message"></textarea>
+
+							<input id="site_mentee" type="text" name="contact_site_mentee">
+
+							<input id="submit" type="submit" value="Send">
+						</form>
+					</div>
+
+
+				</div>
+			</div>
+			<!--end section-holder-->
+			<div class="google-map" data-latitude="-37.81677" data-longitude="144.964956" data-type="ROADMAP" data-zoom="16" data-pointer-title="Hey, We're Here!"></div>
+		</section>
+		<!--END CONTACTS-->
+
+
+
+
+
+
+
+
+
+
+
 		<section id="works" class="works-template" data-source="works.html">
 			<div class="section-holder">
 				<div class="heading">
@@ -385,24 +465,10 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 		<section id="contacts" class="contacts-template">
 			<div class="section-holder">
 				<div class="heading">
-					<h1>Signup!</h1>
+					<h1>Mentor Signup</h1>
 					<nav>
 
 						<div class="section-info">
@@ -432,7 +498,7 @@
 
 					<div class="block one-half last">
 						
-						<form action="form-submit.php" method="post" id="contact-form" class="contact-form">
+						<form action="form-submit.php" method="post" id="contact-form" class="contact-form-mentor">
 							
 							<label for="name">Name*</label>
 							<input placeholder="Name*" id="name" type="text" name="name">
@@ -445,17 +511,21 @@
 							<label for="email">Phone*</label>
 							<input placeholder="Phone*" id="phone" type="text" name="phone">
 
+							<label for="email">Zip Code (5-Digits)*</label>
+							<input placeholder="Zip Code*" id="zip" type="text" name="zip">
 
-							<label for="email">Field of Interest*</label>
-							<input placeholder="Field of Interest*" id="foi" type="text" name="foi">
+							<label for="email">Industry*</label>
+							<input placeholder="Industry*" id="industry" type="text" name="industry">										
+							<label for="email">Job Title*</label>
+							<input placeholder="Job Title*" id="job_title" type="text" name="job_title">
 
-							<label for="email">School Validation Code*</label>
-							<input placeholder="School Validation Code*" id="svc" type="text" name="svc">
+							<label for="email">Current Company*</label>
+							<input placeholder="Current Company*" id="current_company" type="text" name="current_company">	
 
-							<label for="message">Any Additional Notes?*</label>
-							<textarea placeholder="Any Additional Notes?" id="message" name="message"></textarea>
+							<label for="message">Additional Notes?*</label>
+							<textarea placeholder="Additional Notes?" id="message" name="message"></textarea>
 
-							<input id="site" type="text" name="contact_site">
+							<input id="site_mentor" type="text" name="contact_site_mentor">
 
 							<input id="submit" type="submit" value="Send">
 						</form>
@@ -467,12 +537,7 @@
 			<!--end section-holder-->
 			<div class="google-map" data-latitude="-37.81677" data-longitude="144.964956" data-type="ROADMAP" data-zoom="16" data-pointer-title="Hey, We're Here!"></div>
 		</section>
-		<!--END CONTACTS-->
-
-
-
-
-
+		<!--END MENTOR CONTACTS-->
 
 
 
@@ -501,10 +566,13 @@
 							<a href="#about">About</a>
 						</li>
 						<li>
+							<a href="#contacts">Signup</a>
+						</li>
+						<li>
 							<a href="#works">Meetup 101</a>
 						</li>
 						<li>
-							<a href="#contacts">Signup</a>
+							<a href="#">Prospective Mentor?</a>
 						</li>
 					</ul>
 					<!--end nav-->
