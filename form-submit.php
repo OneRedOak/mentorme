@@ -70,6 +70,9 @@
 			}
 		}
 
+		$conn = open_database_connection($config);
+		$add_statment = $conn->prepare("INSERT INTO Users(email, keywords, location, name, phone, foi, svc, notes) 
+						VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
 		
 		$file = file_get_contents("keywords.json");
 		$keywords = json_decode($file, true);
@@ -91,7 +94,16 @@
 			}
 		}
 
-		
+		$add_statment->execute(array(
+										htmlspecialchars($data["email"]),
+										implode(",", $user_keyword_data),
+										htmlspecialchars("98020"),
+										htmlspecialchars($data["name"]),
+										htmlspecialchars($data["phone"]),
+										htmlspecialchars($data["foi"]),
+										htmlspecialchars($data["svc"]),
+										htmlspecialchars($data["message"])
+							   ));
 
 		$headers = 'MIME-Version: 1.0' . "\r\n" .
 					'Content-type: text/html; charset=UTF-8' . "\r\n" .
