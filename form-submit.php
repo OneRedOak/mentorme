@@ -1,6 +1,8 @@
 <?php
 	require_once("private.config.php");
 	require_once("utils.php");
+	require_once('ranking.php');
+	require_once('display-generation.php');
 
 	$data = $_POST;
 	$subject = 'Hello From ilone';
@@ -149,6 +151,20 @@
 
 		if(mail($to, $subject, $complete_message, $headers))
 		{
+			$test_user = new Person(
+			    $data["name"],
+			    $data["email"],
+			    $data["phone"],
+			    $data["zip"], // location
+			    $data["foi"],
+			    $user_keyword_data); // keywords
+
+			$mentor_matches = generate_single_user_matches_html(
+			    $config, 
+			    $test_user, 
+			    4,    // max number of matches
+			    50);  // distance radius
+			$validation_messages['success'] = $mentor_matches;
 			success($validation_messages['success']);
 		}
 		else

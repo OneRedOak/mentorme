@@ -285,15 +285,7 @@
 
 
 
-
-
-
-
-
-
-
-
-		<section id="contacts" class="standart-template">
+		<section id="contacts" class="contacts-template">
 			<div class="section-holder">
 				<div class="heading">
 					<h1>Mentee Signup</h1>
@@ -326,7 +318,7 @@
 
 					<div class="block one-half last">
 						
-						<form action="form-submit.php" method="post" id="contact-form-mentee" class="contact-form">
+						<form action="form-submit.php" method="post" id="contact-form" class="contact-form">
 							
 							<label for="name">Name*</label>
 							<input placeholder="Name*" id="name" type="text" name="name">
@@ -346,8 +338,6 @@
 							<label for="message">Any Additional Notes?*</label>
 							<textarea placeholder="Any Additional Notes?" id="message" name="message"></textarea>
 
-							<input id="site_mentee" type="text" name="contact_site">
-
 							<input id="submit" type="submit" value="Send">
 						</form>
 					</div>
@@ -358,7 +348,15 @@
 			<!--end section-holder-->
 			<div class="google-map" data-latitude="-37.81677" data-longitude="144.964956" data-type="ROADMAP" data-zoom="16" data-pointer-title="Hey, We're Here!"></div>
 		</section>
-		<!--END CONTACTS-->
+		<!--END MENTOR CONTACTS-->
+
+
+
+
+
+
+
+		
 
 
 
@@ -370,34 +368,14 @@
 
 
 
-		<section id="works" class="works-template" data-source="works.html">
+		<section id="mentor_data_container">
 			<div class="section-holder">
 				<div class="heading">
-					<h1>Meetup 101</h1>
+					<h1>Mentee Data</h1>
 				</div>
 				<!--end heading-->
-				<div class="content">
-					<ul class="works-gallery">
-						<li data-tag="graphic-design, other" data-slug="quickresponse">
-							<a class="project-thumb to-project" href="project-01.html">
-								<img src="resources/images/works/thumbs/01.jpg" alt="">
-								<span class="hover-element"></span>
-							</a>
-							<nav class="project-details">
-								<ul class="project-nav">
-									<li>
-										<a class="category" href="#graphic-design">Graphic Design</a>
-									</li>
-									<li>
-										<a class="category" href="#other">Other</a>
-									</li>
-									<li>
-										<a class="to-project" href="project-01.html">Quickresponse</a>
-									</li>
-								</ul>
-							</nav>
-						</li>
-					</ul>
+				<div class="content" id="mentor_data">
+					
 				</div>
 				<!--end content-->
 				<a class="load-more" href="#more">+</a>
