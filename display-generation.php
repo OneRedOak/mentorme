@@ -97,12 +97,59 @@ function generate_masterlist_html($similarities) {
     return implode("\n", $output);
 }
 
+
+
+function grab_custom_data($conn, $table_name) {
+    $result = $conn->query("select * from {$table_name};");
+    $output = array();
+    $extra = array();
+    foreach ($result as $row) {
+        array_push($output,
+            new Person($row['name'], $row['email'], $row['phone'], $row['location'], 
+                       $row['foi'], explode_and_trim(',', $row['keywords']),
+                       $row['latitude'], $row['longitude']));
+        array_push($extra, array(
+            'job_title' => $row['jobtitle'],
+            'company' => $row['currentcompany'],
+            'notes' => $row['notes']));
+    }
+    
+    return array('output' => $output, 'extra' => $extra);
+}
+
+function generate_custom_matches_html($mentors, $extras) {
+    $row = array();
+    
+    array_push($row, '<ol class="mentors">');
+    
+    $counter = 0;
+    foreach ($mentors as $mentor_pair) {
+        $score = $mentor_pair['score'];
+        $mentor = $mentor_pair['mentor'];
+        $extra = $extras[0];
+            
+        array_push($row, '<li class="mentor">');
+        array_push($row, wrap_span('mentor-info name',  $mentor->name));
+        array_push($row, wrap_span('mentor-info job', $extra['job_title']));
+        array_push($row, wrap_span('mentor-info company', $extra['company']));
+        array_push($row, wrap_span('mentor-info info', $extra['notes']));
+        array_push($row, wrap_span('mentor-info keywords',  $mentor->pretty_keywords()));
+        
+        array_push($row, '</li>');
+    }
+    array_push($row, '</ol>');
+    
+    return implode("\n", $row);
+}
+
 function generate_single_user_matches_html($config, $user, $amount, $distance_threshold) {
     $conn = $conn = open_database_connection($config);
-    $mentor_data = grab_data($conn, 'Mentors');
+    $data = grab_custom_data($conn, 'Mentors');
+    $mentor_data = $data['output'];
+    $mentor_extra = $data['extra'];
     
     $ranked_mentors = $user->get_best_matches($mentor_data, $amount, $distance_threshold);
     
-    return generate_matches_html($ranked_mentors);
+    return generate_custom_matches_html($ranked_mentors, $mentor_extra);
 }
 ?>

@@ -10,14 +10,18 @@ class Person
     public $location;
     public $field_of_interest;
     public $keywords;
+    public $latitude;
+    public $longitude;
     
-    public function __construct($name, $email, $phone, $location, $field_of_interest, $keywords) {
+    public function __construct($name, $email, $phone, $location, $field_of_interest, $keywords, $latitude, $longitude) {
         $this->name = $name;
         $this->email = $email;
         $this->phone = $phone;
         $this->location = $location;
         $this->field_of_interest = $field_of_interest;
         $this->keywords = $keywords;
+        $this->latitude = $latitude;
+        $this->longitude = $longitude;
     }
     
     public function pretty_keywords() {
@@ -77,7 +81,8 @@ function grab_data($conn, $table_name) {
     foreach ($result as $row) {
         array_push($output,
             new Person($row['name'], $row['email'], $row['phone'], $row['location'], 
-                       $row['foi'], explode_and_trim(',', $row['keywords'])));
+                       $row['foi'], explode_and_trim(',', $row['keywords']), 
+                       $row['latitude'], $row['longitude']));
     }
     
     return $output;

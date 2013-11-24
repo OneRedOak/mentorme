@@ -12,7 +12,9 @@ $test_user = new Person(
     '425-123-1234',
     '98020',
     'field of interest - not currently used',
-    array('python', 'java', 'php'));
+    array('python', 'java', 'php'),
+    47.8040624,
+    -122.3735496);
     
 $mentor_matches = generate_single_user_matches_html($config, $test_user, 4, 50);
 
@@ -52,6 +54,10 @@ function grab_similarities($config, $amount, $distance_threshold) {
     <h1>View Matches</h1>
     <p><a href="view-matches.php?csv=true">Download as csv</a></p>
     
+    <h2>Test match</h2>
+    <?php echo $mentor_matches; ?>
+    
+    <h2>All matches</h2>
     <?php echo generate_masterlist_html($similarities); ?>
 </body>
 </html>
