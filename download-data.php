@@ -1,7 +1,7 @@
 <?php
+require_once('private.config.php');
 require_once('database.php');
 
-$config = parse_config('private.config.cfg');
 $conn = open_database_connection($config);
 
 
@@ -11,6 +11,8 @@ $conn = open_database_connection($config);
 <html>
 <body>
     <h1>Testing</h1>
+    <p><?php echo $config['database_host'] ?></p>
+    <p><?php echo $config['database_username'] ?></p>
     <p><?php echo $config['database_name'] ?></p>
     <p><?php echo $config['database_password'] ?></p>
 </body>
