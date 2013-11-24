@@ -1,0 +1,997 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"><head lang="en">
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<title>Template Documentation Template</title>
+	<!-- Framework CSS -->
+	<link rel="stylesheet" href="assets/blueprint-css/screen.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="assets/blueprint-css/print.css" type="text/css" media="print">
+	<!--[if lt IE 8]><link rel="stylesheet" href="assets/blueprint-css/ie.css" type="text/css" media="screen, projection"><![endif]-->
+	<style type="text/css" media="screen">
+		p, table, hr, .box { margin-bottom:25px; }
+		.box p { margin-bottom:10px; }
+	</style>
+</head>
+
+
+<body>
+	<div class="container">
+	
+		<h3 class="center alt">&ldquo;ilone&rdquo; Documentation by &ldquo;baklach&rdquo; v1.0</h3>
+		
+		<hr>
+		
+		<h1 class="center">&ldquo;ilone - One Paged Portfolio Template&rdquo;</h1>
+		
+		<div class="borderTop">
+			<div class="span-6 colborder info prepend-1">
+				<p class="prepend-top">
+					<strong>
+					Created: 13/02/2013<br>
+					By: baklach<br>
+					</strong>
+				</p>
+			</div><!-- end div .span-6 -->		
+	
+			<div class="span-12 last">
+				<p class="prepend-top append-0">Thank you for purchasing my theme. If you have any questions that are beyond the scope of this help file, please feel free to email via my user page contact form <a href="http://themeforest.net/user/baklach">here</a>. Thanks so much!</p>
+			</div>
+		</div><!-- end div .borderTop -->
+		
+		<hr>
+		
+		<h2 id="toc" class="alt">Table of Contents</h2>
+		<ol class="alpha">
+			<li><a href="#htmlStructure">HTML Structure</a></li>
+			<li><a href="#boxloader">Box Loader</a></li>
+			<li><a href="#mediabox">Media Box / LightBox</a></li>
+			<li><a href="#cssFiles">CSS Files and Structure</a></li>
+			<li><a href="#javascript">JavaScript</a></li>
+			<li><a href="#php">PHP Code Explanation</a></li>
+		</ol>
+		<hr>
+		<h3>Before We Start</h3>
+		<p>ilone is a one paged html template powerd by ajax. Because page transitions are done by loading separate html files into the main index.html with ajax, it can not run with "file:" protocol. It requires a local (localhost) or remote hosted server to work.</p>
+		<br>
+
+		<hr>
+		
+		<h3 id="htmlStructure"><strong>A) HTML Structure</strong> - <a href="#toc">top</a></h3>
+		<p>The structure of this template is very intuitive and easy to understand. Let's dive in to the main structure itself.</p>
+		
+		<pre name="code" class="html">
+			<section id="home" class="home-template">
+				<!-- *Landing Section/Page* -->
+				<!-- *See the explanation of sections below* -->
+			</section>
+
+			<header id="header">
+				<!-- Header holds the main navigation menu and the logo -->
+			</header>
+
+			<section id="/ section-id /" class="/ section-template /">
+				<!-- *See the explanation of sections below* -->
+			</section>
+
+			<footer id="footer">
+				<!-- Footer contains the social icons, copyrigt notice text and a navigation menu -->
+			</footer>
+		</pre>	
+		<br>
+		<p><strong>*Sections: </strong>Each section represents a page, so when you declare a section with proper id and a template class, Javascript automatically applies the neccesary code to the section and enables the functionality automatically. There is a structure inside sections that must be fallowed in order to make it work.</p>
+		<br>
+		<h4><strong>Section structure</strong></h4>
+
+		First you have to have a section with proper id and template class.
+		<pre name="code" class="html">
+			<section id="works" class="works-template">
+				
+			</section>
+		</pre>	
+		In this case we have applied the "works-template" which will take care of the Css Style and of course the proper JavaScript will be applied to the section enabling Works section functionality.
+		<br>
+		<br>
+		There is a very important part in sections that must exist in every section in order for JavaScript to work.
+		It is a "DIV" element with class "section-holder".
+		<pre name="code" class="html">
+			<section id="works" class="works-template">
+				<div class="section-holder">
+					<!-- The content goes here -->
+				</div>
+			</section>
+		</pre>	
+		"section-holder", is the element that is animated in sections like "Works" ("works-template") and "Blog" ("blog-template") when there is a page swith. So, This is the main structure for sections that make the pageswitch possible, you may have anything inside "section-holder" element and it will still be animate if that particular section supports page swith. 
+		<br>
+		If the page switch is supported, there is an anchor element with a special class that initiates the pageswitch. Check each section explanation in order to find the special class for those.
+		<br>
+		<br>
+		<strong>Section id: </strong>
+		<br>
+		Another importat part in sections is the ID. The main naviagtion relies on the id of each section plus if the deeplinking is enabled section id will be used as a pointer to the section where the interactions occur.
+		<br>
+		Deeplink functionality will be explained further in <a href="#javascript">JavaScript</a> section.
+		<br>
+		<br>
+		<h4><strong>List of sections, their specific structure, their valid template classes and explanation</strong></h4>
+		<ul>
+			<li>
+				<strong>Home Page</strong> - <em>"home-template"</em>
+				<pre name="code" class="html">
+					<section id="home" class="home-template">
+						<div class="section-holder">
+							
+							<div class="slider">
+								<ul class="slides">
+									<li>
+										<img src="resources/images/slides/01.jpg" alt="Slide 01">
+										<h1 class="caption" data-offset-top="130" data-offset-left="120" data-direction="left" >Caption text</h1>
+										<h4 class="caption" data-offset-top="248" data-offset-left="204">Caption text</h4>
+									</li>
+								</ul>
+							</div>
+
+							<div class="page-controls">
+								<a class="previous" href="#"></a>
+								<a class="next" href="#"></a>
+							</div>
+
+						</div>
+					</section>
+				</pre>
+				Home tempalte is used for a home-page. It includes a slider with captions and slider navigation controls.
+				<br>
+				<br>
+				<strong>Slider: </strong> Slider plugin used in home-page is Flex-Slider. It's main structure is a div element containing an unordered list with slides.
+				<pre name="code" class="html">
+					<div class="slider">
+						<ul class="slides">
+							<li>
+								<img src="resources/images/slides/01.jpg" alt="Slide 01">
+								<h1 class="caption" data-offset-top="130" data-offset-left="120" data-direction="left" >Caption text</h1>
+								<h4 class="caption" data-offset-top="248" data-offset-left="204">Caption text</h4>
+							</li>
+						</ul>
+					</div>
+				</pre>
+				<br>
+				<br>
+				<strong>Captions: </strong> Captions are elements that have a class-name of "caption". H1 and H4 heading tags with calass-name "caption" are already styled as can be seen in the preview. 
+				<br>
+				<br>
+				<strong>data-offset-top, data-offset-left: </strong> Those data attributes sett the destination of captions to be animated to.
+				<br>
+				<br>
+				<strong>data-direction: </strong> data-direction sets the initial position of captions, thus the directions  where those will be animated from.
+				<br>
+				<br>
+				<strong>Slider Navigation: </strong> The "next" and "previous" navigation elements are conteind in a div with class-name of "page-controls". Those are present in the markup but the navigation found under the slider are generated by slider itself.
+				<br>
+				<br>
+				<br>
+			</li>
+			<li>
+				<strong>Works Page</strong> - <em>"works-template"</em>
+				<pre name="code" class="html">
+					<section id="works" class="works-template" data-source="works.html">
+						<div class="section-holder">
+
+							<!--Heading-->
+							<div class="heading">
+								<h1>Works</h1>
+
+								<!--Filter/Section Navigation-->
+								<nav>
+									<span class="section-nav-label">All Projects</span>
+									<ul class="section-nav works-filter">
+										<li>
+											<a href="#all">All Projects</a>
+										</li>
+										<li>
+											<a href="#graphic-design">Graphic Design</a>
+										</li>
+										<li>
+											<a href="#branding">Branding</a>
+										</li>
+										<li>
+											<a href="#other">Other</a>
+										</li>
+									</ul>
+									
+								</nav>
+							</div>
+							
+							<!--Content-->
+							<div class="content">
+
+								<!-- Gallery/Projects list -->
+								<ul class="works-gallery">
+									<li data-tag="graphic-design, other" data-slug="quickresponse">
+
+										<!-- Project thumbnail -->
+										<a class="project-thumb to-project" href="project-01.html">
+											<img src="resources/images/works/thumbs/01.jpg" alt="">
+											<span class="hover-element"></span>
+										</a>
+
+										<!-- Project title and categories -->
+										<nav class="project-details">
+											<ul class="project-nav">
+												<li>
+													<a class="category" href="#graphic-design">Graphic Design</a>
+												</li>
+												<li>
+													<a class="category" href="#other">Other</a>
+												</li>
+												<li>
+													<a class="to-project" href="project-01.html">Quickresponse</a>
+												</li>
+											</ul>
+										</nav>
+
+
+									</li>
+								</ul>
+							</div>
+
+							<!--Load more button-->
+							<a class="load-more" href="#more">+</a>
+
+						</div>
+						<!--end section-holder-->
+					</section>
+				</pre>
+				"Works Page" is made of a heading, content and an unorderd list that holds the projects.
+				<br>
+				<br>
+				<strong>data-source: </strong> Sections like Works and Blog have this special HTML5 tag which holds the URL to the html file where all the additional data is stored. In this case Works section should point to "gallery.html" file where all the projects are listed. This will be used to "Load More" projects into the "works-gallery".
+				<br>
+				<br>
+				<strong>data-tag: </strong> This HTML5 attribute holds tags/categories/filter values. It can contain more then one category and must be separated with commas like so: "graphic-design, illustrations, other". Note that there is no need to put the "all" tag in, because this is a spacial tag that will show all the projects available in the "works-gallery" list no matter what data-tag a project contains.
+				<br>
+				<br>
+				<strong>data-slug: </strong> This HTML5 attribute is used as slug for that specific project to be appanded to the deeplink value. This must be unique to each project. Note that this will be used if deeplinking is enabled.
+				<br>
+				<br>
+				<br>
+				<strong>Page switch special class: </strong> For Works section the anchor tag with special class that initiates the page switch is "to-project".
+				<br>
+				<br>
+			</li>
+			<li>
+				<strong>Blog/News Page</strong> - <em>"blog-template"</em>
+				<pre name="code" class="html">
+					<section id="news" class="blog-template" data-source="news.html">
+						<div class="section-holder">
+							
+							<div class="heading">
+								<h1>News</h1>
+
+								<!--Blog Categories/Section Navigation-->
+								<nav>
+									<span class="section-nav-label">Latest Posts</span>
+									<ul class="section-nav blog-categories">
+										<li>
+											<a href="#all">Latest Posts</a>
+										</li>
+										<li>
+											<a href="#html">HTML</a>
+										</li>
+										<li>
+											<a href="#css">CSS</a>
+										</li>
+										<li>
+											<a href="#web-design">Web Design</a>
+										</li>
+										<li class="separate">
+											<a href="#march">March</a>
+										</li>
+										<li>
+											<a href="#february">February</a>
+										</li>
+										<li>
+											<a href="#january">January</a>
+										</li>
+									</ul>
+									
+								</nav>
+							</div>
+
+							<!--Content-->
+							<div class="content">
+
+								<!-- Blog Posts -->
+								<ul class="blog-posts">
+									<li data-tag="html, web-design" data-slug="amazing-html5-history-object">
+										<a class="post-thumb read-more" href="blog-post.html">
+											<img src="resources/images/news/thumbs/01.jpg" alt="">
+											<span class="hover-element"></span>
+										</a>
+										<div class="post-details">
+											<h5>Amazing HTML 5 History Object</h5>
+											<p><em>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem.</em></p>
+											<a class="read-more" href="blog-post.html">Read More</a>
+										</div>
+									</li>
+								</ul>
+
+							</div>
+						</div>
+						<!--end section-holder-->
+					</section>
+					<!--END NEWS-->
+				</pre>
+				"Blog Page" is made of a heading, contnet. 
+				<br>
+				<br>
+				<strong>Spacial Behavior: </strong> In case of News you may leave the "blog-posts" list empty because posts are being loaded and are being overwriten by data from "data-source" when the page loads. this is a specific behavior for News section because it must know the exact number of all posts in order to be able to paginate and filter throughout all of the posts unlike Works section.
+				<br>
+				<br>
+				<strong>data-source: </strong> Sections like Works and News have this special HTML5 tag which holds the URL to the html file where all the additional data/posts are stored. In this case News section should point to "news.html" file where all the posts are listed. This will be used for filter/pagination functionality.
+				<br>
+				<br>
+				<strong>Filter/Categories: </strong> Every filter/category anchor tag in "blog-categories" must have a href value as "#" plus the filter/category name like "#html". This will filter all the posts listed in the "blog-posts" list that have "html" in their "data-tag". Note that "blog-categories" and "blog-archives-by-month" have a class called "dynamic". This class enables the dynamic behavior of categories and archives as seen in demo/preview. If removed, both "blog-categories" and "blog-archives-by-month" will be always visible not just the curent category or archive.
+				<br>
+				<br>
+				<strong>data-tag: </strong> This html5 attribute holds tags/categories/filter values. It can contain more then one category and must be separated with commas like so: "html, web-design, november". The list of tags/categories can contain the archives by month values as well so posts can be filterd by month. Note that there is no need to put the "all" tag in, because this is a spacial tag that will show all the projects available in the "blog-posts" list no matter what data-tag a post contains.
+				<br>
+				<br>
+				<strong>data-slug: </strong> This html5 attribute is used as slug for that specific post to be appanded to the deeplink value. This must be unique to each post. Note that this will be used if deeplinking is enabled.
+				<br>
+				<br>
+				<strong>Pagination: </strong> Pagination is handled by JavaScript, controls are in a div element with class name "page-controls", which is generated automatically.
+				<br>
+				<br>
+				<strong>Page switch special class: </strong> For Blog/News section the anchor tag with special class, that initiates the pageswith, is "read-more".
+				<br>
+				<br>
+				<br>
+			</li>
+
+			<li>
+				<strong>About Page</strong> - <em>"about-template"</em>
+				<pre name="code" class="html">
+					<section id="about" class="about-template inverse-color">
+						<div class="section-holder">
+							
+							<ul class="team-members">
+
+								<li>
+									<a class="avatar mediabox" href="resources/images/about/01.jpg">
+										<img src="resources/images/about/01.jpg" alt="">
+									</a>
+									<div class="member-details">
+										<h5>Jonathan Doe</h5>
+										<p><em>Web Designer / Code Magician</em></p>
+									</div>
+									<div class="social-icons-container">
+										<a class="social-icon" href="http://dribbble.com">
+											<img src="resources/images/social/dribbble.png" alt="dribbble"/>
+										</a>
+										<a class="social-icon" href="http://twitter.com">
+											<img src="resources/images/social/twitter.png" alt="twitter"/>
+										</a>
+										<a class="social-icon" href="http://dribbble.com">
+											<img src="resources/images/social/dribbble.png" alt="dribbble"/>
+										</a>
+									</div>
+									
+								</li>
+
+								<!-- .................. -->
+
+							</ul>
+							<!--end team-members-->
+
+
+							<div class="heading">
+								<h1>A bit about our small gang of creatives</h1>
+								<nav>
+									<span class="section-nav-label">Want more?</span>
+
+									<div class="section-info">
+										<h5>About ilone itself</h5>
+										<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper. Suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+									</div>
+									<!--section-info-->
+								</nav>
+							</div>
+							<!--end heading-->
+							<div class="content">
+								<!-- [ Content Here ] -->
+							</div>
+							<!--end content-->
+						</div>
+						<!--end section-holder-->
+					</section>
+					<a href="#home" class="go-up"></a>
+				</pre>
+				<br>
+				About page consists of the "team members" a header and content.
+				<br>
+				<br>
+				<strong>inverse-color: </strong> If this class is applied to a section it will invert to colors making background dark and text light, as can be seen in preview About section.
+				<br>
+				<br>
+				<strong>Team Members: </strong> Team Members consists of an unorderd list containing each member details as a list item. It has an avatar which has a mediabox class-name applied to it (the media box/lightbox functionality explained <a href="mediabox">below</a>) and it has a container div with social icons.
+				<br>
+				<br>
+				<strong>section-info: </strong> This is a container to hold information. It resides in the header with a opener element with class-name of "section-nav-label".
+				<br>
+				<br>
+				<br>
+			</li>
+
+			<li>
+				<strong>Features Page</strong> - <em>"standart-template"</em>
+				<pre name="code" class="html">
+					<section id="features" class="standart-template">
+						<div class="section-holder box-loader">
+							<div class="heading">
+								<h1>Features</h1>
+								<nav>
+									<span class="section-nav-label box-loader-nav-title">Blocks</span>
+									<ul class="section-nav">
+
+										<li class="bl-activeate-on-child-link">
+											<a class="box-loader-link" href="elements.html#blocks">Blocks</a>
+										</li>
+
+										<li class="bl-activeate-on-child-link">
+											<a class="box-loader-link box-loader-activate" href="elements.html#gallery">Gallery</a>
+										</li>
+
+										<li class="bl-activeate-on-child-link">
+											<a class="box-loader-link" href="elements.html#typography">Typography</a>
+										</li>
+
+										<li class="bl-activeate-on-child-link">
+											<a class="box-loader-link" href="elements.html#interactive">Interactive</a>
+										</li>
+
+									</ul>
+									<!--end filter-->
+								</nav>
+							</div>
+							<!--end heading-->
+							<div class="content box-loader-data">
+								
+							</div>
+						</div>
+						<!--end section-holder-->
+					</section>
+					<!--END SECTION ABOUT-->
+					<a href="#home" class="go-up"></a>
+				</pre>
+				"standart-template" does not feature any special functionality. This is a simple section that can hold any static content that you might want to have. In the preview this page contains a "Features" which is made by a special custom moduel integrated into this template called "Box Loader". The funcionality of "Box Loader" is explaind further in this documentation as a separete section called <a href="#boxloader">Box Loader</a>.
+				<br>
+				<br>
+				<strong>Content:</strong> This template can contain any type of non-special (Special sections are: Home, Blog, Work, Contacts) content. You might want to use a full width content or a content with left or right alignment and sidebar with right or left alignment depending on content alignment. Of coures if the content specified is full width, ther must be no sidebar in the html code.
+				<br>
+				<br>
+				<strong>Valid content classes: </strong> "content" - Full Width, "content-left" - Content aligned to left, "content-right" - Content aligned to right.
+				<br>
+				<br>
+				<strong>Valid sidebar classes: </strong> "sidebar-left" - Sidebar aligned to left, "sidebar-right" - Sidebar aligned to right.
+				<br>
+				<br>
+				<br>
+			</li>
+
+			<li>
+				<strong>Contacts Page</strong> - <em>"contacts-template"</em>
+				<pre name="code" class="html">
+					<section id="contacts" class="contacts-template">
+						<div class="section-holder">
+							<div class="heading">
+								<h1>Contacts</h1>
+								<nav>
+									<a href="#" class="section-nav-label to-map">Map</a>
+									<div class="section-info">
+										
+									</div>
+									<!--end filter-->
+								</nav>
+							</div>
+							<!--end heading-->
+
+							<div class="content">
+
+								<div class="block one-half">
+									<div class="contacts-info">
+										<p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
+										<br>
+										<p>Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio.</p>
+										<br>
+										<a class="social-icon" href="http://dribbble.com">
+											<img src="resources/images/social/dribbble.png" alt="dribbble"/>
+										</a>
+										<a class="social-icon" href="http://twitter.com">
+											<img src="resources/images/social/twitter.png" alt="twitter"/>
+										</a>
+									</div>
+								</div>
+
+								<div class="block one-half last">
+									
+									<form action="form-submit.php" method="post" id="contact-form" class="contact-form">
+										
+										<label for="name">Name*</label>
+										<input placeholder="Name*" id="name" type="text" name="name">
+
+
+										<label for="email">Email*</label>
+										<input placeholder="Email*" id="email" type="text" name="email">
+
+
+										<label for="message">Message*</label>
+										<textarea placeholder="Message*" id="message" name="message"></textarea>
+
+										<input id="site" type="text" name="contact_site">
+
+										<input id="submit" type="submit" value="Send">
+									</form>
+								</div>
+
+
+							</div>
+						</div>
+						<!--end section-holder-->
+
+
+						<div class="google-map" data-latitude="-37.81677" data-longitude="144.964956" data-type="ROADMAP" data-zoom="16" data-pointer-title="Hey, We're Here!"></div>
+
+
+					</section>
+				</pre>
+				"contacts-template" is stuctured as a standard template but has some special elements like the map opener "to-map", "google-map" container and the contact form itself. It has the standard heading and content which can be modified, of course provided that the form exist within the section and the special field is present within the form. 
+				<br>
+				Google maps can be removed without affecting functionality of the section, that is why it is not considered as mandatory functionality. If you would like to have the map but change the layout, let's say to full width, you must have the structure of google maps container intact, means you must have the map container as last element in section outside of the section holder.
+				<br>
+				<br>
+				<strong>Map Opener - to-map:</strong> This is a button that loads google map into the map container.
+				<br>
+				<br>
+				<strong>Google Map Container:</strong> This element contains the google maps when map load is requested by clicking on the map opener. It has varius data attributes that configure and pinpoint the map to a certain loacation. 
+				<br>
+				<br>
+				In order to acquire the information needed for the map you need to flow this 3 simple steps.
+				<br>
+				1) Open http://maps.google.com
+				<br>
+				2) Find the loaction you need
+				<br>
+				3) Right click on the exact location where you want the map to pinpoint and click "What's here?" from the contextual menu.
+				<br>
+				<br>
+				In the search bar on top of the page you will find the latitude and longitude seperated with a coma like so "40.783239,-73.973357". Copy the first number, latitude and paste in the "data-latitude" value like so data-latitude="40.783239". Then do the same for the longitude but take the second part of "40.783239,-73.973357", which is "-73.973357" witout the comma.
+				<br>
+				<br>
+				"data-type" is the map type, it is set to the road map by default (note that it is in uppercase). Here is the list of valid map types:
+				<br>
+				1) ROADMAP displays the default road map view
+				<br>
+				2) SATELLITE displays Google Earth satellite images
+				<br>
+				3) HYBRID displays a mixture of normal and satellite views
+				<br>
+				4) TERRAIN displays a physical map based on terrain information.
+				<br>
+				<br>
+				"data-zoom" this is how much it will be zoomed in on the location. The range can be from 0.1 to 19.
+				<br>
+				<br>
+				"data-pointer-title" value will be show in the tooltip when user hovers over the pointer. You may leave it empty, the pointer will still be ther, but if you need to remove the pointer, you have to remove the whole attribute.
+				<br>
+				<br>
+				<strong id="php-expl">Contact Form:</strong> The Contact Form is a simple html form that can contain input, select, etc elements. There is already a default set of fileds in the form like name, email and message.
+				<br>
+				JavaScript grabs the data from the form and sends it to "form-submit.php" with Ajax. "form-submit.php" validates and sends the email provided that your server supports PHP and the PHP's mail functionality.
+				You may add aditional fileds that will be included in the email added right after the main message in following format. Exp: 
+				<pre name="code" class="html">
+					<input placeholder="Field" id="field" type="text" name="Field">
+
+
+					<!--received email will have a text with...-->
+					[main message text goes here]
+
+					Field: [the value user put in the field]
+				</pre>
+				<br>
+				<br>
+				<strong>form-submit.php:</strong> The recipient email, subject of the email and all the field errors, success messages are located in this PHP file. If you need to change them you have to edit the file. Let's see the options you need and may edit.
+				<pre name="code" class="php">
+					$receiver = 'mail@domain.com'; //the email address of the recipiant
+
+					$send_copy_to_sender = false; //if set to true, form will send a copy to the sender as well
+
+					//validation messages
+					$validation_messages = array(
+						'invalid_email' => 'Please provide valid email.', //If email was not valid
+						'invalid_name' => 'Please provide a valid name.', //if name field was not valid
+						'empty_message' => 'Message is empty.', //if the message field was empty
+						'empty_field' => 'can not be empty.',	//if a custom/additional filed was empty
+						'global_error' => 'Could not send the email, please try again later.', //a global error where email could not be sent
+						'spam_bot' => 'Spam is not welcome!', //if a spam bot was detected
+						'success' => 'Your email has been sent.' //if the email was sent successfuly
+					);
+				</pre>
+				<br>
+				<br>
+				<br>
+			</li>
+		</ul>
+
+		<br>
+		<hr>
+
+		<h3 id="boxloader"><strong>B) Box Loader</strong> - <a href="#toc">top</a></h3>
+		Box Loader is a custom module that makes it possible to load html data from a file into the main page, like the "Team/Member Viewer" in the preview. Below is the explanation of its functionality and structure.
+		<pre name="code" class="html">
+			<!-- main container for the Box Loader -->
+			<div class="box-loader">
+				<ul>
+					<li class="bl-activeate-on-child-link">
+						<a class="box-loader-link box-loader-activate" href="sample-html-files/sample.html#sample-text">
+							Load Element With ID "sample-text"
+						</a>
+					</li>
+					<li class="bl-activeate-on-child-link">
+						<a class="box-loader-link" href="sample-html-files/sample.html#sample-images">
+							Load Element With ID "sample-images"
+						</a>
+					</li>
+				</ul>
+
+				<div class="box-loader-data">
+					<!-- Loaded data/element will be here -->
+				</div>
+			</div>
+		</pre>
+		Lets take a look at the classes and their purpose.
+		<pre name="code" class="html">
+			<div class="box-loader">
+				
+			</div>
+		</pre>
+		<strong>box-loader:</strong> This element is the main container for the Box Loader module. Without it the module will not be initiated thus will not work.
+		<br>
+		<br>
+		<pre name="code" class="html">
+			<li class="bl-activeate-on-child-link">
+				
+			</li>
+		</pre>
+		<strong>bl-activeate-on-child-link:</strong> This class is used on the parent or grand-parent of the main anchor element that initiates the page load. It makes sure that the active class will be applied to itself instead of the anchor. So if you don't need to have separate containers/wrapper for each of your anchor elements you don't have to use this class. If no "bl-activeate-on-child-link" is found on the active anchor's parent or grand-parent then the active class will be applied to anchor itself.
+		<br>
+		<br>
+		<pre name="code" class="html">
+			<a class="box-loader-link" href="sample-html-files/sample.html#sample-element-id">
+				Link Label
+			</a>
+		</pre>
+		<strong>box-loader-link:</strong> Any anchor, within the main Box Loader ("box-loader") container, that has a class of "box-loader-link" will initiate page/data load. 
+		<br>
+		<br>
+		<strong>box-loader-link <em>href=""</em>:</strong> The structure of the href is quit intuitive. It is split into two parts, the url of the html file ("sample-html-files/sample.html") followed by a hash tag (#) and the id (sample-element-id) of the element which resides in the loaded html file that will be loaded into the "box-loader-data".
+		<br>
+		<br>
+		<strong>box-loader-activate:</strong> This class can be applied on one of "box-loader-link" anchor elements. It will force the Box Loader module to load the data according to href value of that anchor when the main page is loaded.
+		<br>
+		<br>
+		<pre name="code" class="html">
+			<div class="box-loader-data">
+				<!-- Loaded data/element will be here -->
+			</div>
+		</pre>
+		<strong>box-loader-data:</strong> This element is the container for newly loaded data. It will hold the loaded data/element when data is requested by a click on any of the "box-loader-link" anchor elements.
+		<br>
+		<br>
+		Let's summarize, A Box Loader module will be applied to an element with class "box-loader" which contains the "box-loader-link", "box-loader-data". In an event of data request when user clicks on any of "box-loader-link" anchors, "box-loader-data" will animate out, then Box Loader module will load the data, append the newly loaded data into "box-loader-data" element, then animate "box-loader-data" back in applying the active class on the anchor element that was clicked or on a parent of that "box-loader-link" if "bl-activeate-on-child-link" class exists on any of its parents.
+		<br>
+		<br>
+		<br>
+		<hr>
+
+
+
+		<h3 id="mediabox"><strong>C) Media Box / LightBox</strong> - <a href="#toc">top</a></h3>
+		Media Box is a custom module which loads images, youtube, vimeo videos and websites in a lightbox manner. Greate thing about this module is that it recognizies the media type itself. If it is an image it will load the image, if a youtube or vimeo video it will load the video player. Lets see how it works.
+		<br>
+		<br>
+		<strong>Loading Single Media - Image</strong>
+		<pre name="code" class="html">
+			<a title="Media Title" href="big-image-url/image.jpg">
+				<img alt="Thumbnail" src="/thumbs/thumb.jpg">
+			</a>
+		</pre>
+		This will make the Media Box to load the image from the "big-image-url/image.jpg" url.
+		<br>
+		<br>
+		<strong>Loading Single Media - Youtube</strong>
+		<pre name="code" class="html">
+			<!-- Long url of the video -->
+			<a data-dimension="640x420" title="Media Title" href="http://www.youtube.com/watch?v=GgR6dyzkKHI">
+				<img alt="Thumbnail" src="resources/images/gallery/thumbs/05.jpg">
+			</a>
+
+			<!-- Sort url of the video -->
+			<a data-dimension="640x420" title="Media Title" href="http://youtu.be/GgR6dyzkKHI">
+				<img alt="Thumbnail" src="/thumbs/thumb.jpg">
+			</a>
+		</pre>
+		Media Box will automatically recognize that this is a Youtube video and will load Youtube player with the specified url. You may use either the long or short url.
+		<br>
+		<br>
+		<strong>Loading Single Media - Vimeo</strong>
+		<pre name="code" class="html">
+			<!-- url of the video -->
+			<a data-dimension="640x420" title="Media Title" href="http://vimeo.com/7449107">
+				<img alt="Thumbnail" src="resources/images/gallery/thumbs/05.jpg">
+			</a>
+		</pre>
+		Media Box will automatically recognize Vimeo video and load Vimeo player.
+		<br>
+		<br>
+		<strong>Loading Single Media - iframe</strong>
+		<pre name="code" class="html">
+			<!-- url of the website -->
+			<a data-dimension="640x420" title="Media Title" href="http://envato.com">
+				<img alt="Thumbnail" src="resources/images/gallery/thumbs/05.jpg">
+			</a>
+		</pre>
+		Media Box also can load websites into an iframe. Note that some websites have some restrictions that will prevent the website to be loaded Exp: http://google.co.uk
+		<br>
+		<br>
+		<strong>title:</strong> Title attribute of anchor element will be used to show a title under the loaded media if title value is set.
+		<br>
+		<br>
+		<strong>data-dimension:</strong> data-dimension attribute is used to set the dimensions of the media. The structure is WIDTH<strong>x</strong>HEIGHT. So, let's say you need a Youtube video with 400px width and 300px height, you need to set it like so:
+		<pre name="code" class="html">
+			<a data-dimension="400x300" href="http://youtu.be/GgR6dyzkKHI">Youtube Video</a>
+		</pre>
+		<br>
+		<br>
+		<br>
+		<strong>Making a gallery</strong>
+		<pre name="code" class="html">
+			<div class="media-gallery">
+				<a href="big-image-url/image.jpg">
+					<img alt="Thumbnail" src="/thumbs/thumb.jpg">
+				</a>
+				<!-- Long url of the video -->
+				<a href="http://www.youtube.com/watch?v=GgR6dyzkKHI">
+					<img alt="Thumbnail" src="resources/images/gallery/thumbs/05.jpg">
+				</a>
+
+				<!-- Sort url of the video -->
+				<a href="http://youtu.be/GgR6dyzkKHI">
+					<img alt="Thumbnail" src="/thumbs/thumb.jpg">
+				</a>
+				<!-- url of the video -->
+				<a href="http://envato.com">
+					<img alt="Thumbnail" src="resources/images/gallery/thumbs/05.jpg">
+				</a>
+				<!-- url of the website -->
+				<a href="http://envato.com">
+					<img alt="Thumbnail" src="resources/images/gallery/thumbs/05.jpg">
+				</a>
+			</div>
+		</pre>
+		In order to make a gallery you have to create an element with class "media-gallery" and put all the links into it. Media Box will automatically detect that these links are in a gallery and will enable next and previous navigation.
+		<br>
+		<br>
+		<br>
+		<hr>
+
+		<h3 id="cssFiles"><strong>D) CSS Files and Structure</strong> - <a href="#toc">top</a></h3>
+		<strong>style.css</strong>
+		<pre name="code" class="css">
+			/* === RESET ALL SETTINGS === */
+			contains all the settings that were reset
+
+			/* === TYPOGRAPHY === */
+			contains rules to style the typography
+
+			/* === LAYOUT/CONTENT/BLOCKS/HEADINGS === */
+			styling the main layout
+
+			/* === HEADER === */
+			styling the main header
+
+			/* === TEMPLATE SPECIFICS === */
+			Any template specific styling
+
+			/* === WORKS === */
+			works-template styling
+
+			/* ==== PROJECT SLIDER/PROJECTS ===== */
+			styling the slider used in the projects
+
+			/* === ABOUT PAGE === */
+			about-template styling
+
+			/* === BLOG/NEWS === */
+			blog-template styling
+
+			/* === CONTACTS TEMPLATE === */
+			contacts-template styling
+
+			/* ==== FOOTER ==== */
+			Footer Styling
+
+			/* ==== SLIDER ==== */
+			Slider Styling
+
+								/* BOX LOADER */
+
+
+			/* ==== ADDITIONAL STYLES / ELEMENTS ==== */
+
+				/* social icons */
+
+				/* Link */
+
+				/* Page controls */
+
+				/* Load More */
+
+				/* Widgets */
+
+
+				/* MEDIA GALLERY */
+
+				/* MEDIA BOX */
+
+				/* TABS */
+
+				/* TOGGLES */
+
+				/* MESSAGE BOXES */
+
+				/* HIGHLIGHTS */
+
+				/* DROP-CAPS */
+
+
+				/* Google Maps */
+
+				/* Team Members */
+
+				/* Overlay/preload Screen Style */
+
+		</pre>
+		<br>
+		<br>
+		<strong>ie9-style.css</strong> Some specific styles for Internet Explorer 9 to enable the labels for input boxes.
+		<br>
+		<strong>ie8-style.css</strong> Some specific styles for Internet Explorer 8 to adjust Media Box background, apply necessary display property to html5 elements and enable the labels for inputs.
+		<br>
+		<br>
+		<strong>media-queries.css</strong> This CSS file contains the style for mobile devices.
+		<pre name="code" class="css">
+			/* Apply style if browser width is less then 960px */
+			@media screen and (max-width: 960px) {
+				...
+			}
+
+			/* Apply style if browser width is less then 740px */
+			@media screen and (max-width: 740px) {
+				...
+			}
+
+			/* Apply style if browser width is less then 480px */
+			@media screen and (max-width: 480px) {
+				...
+			}
+		</pre>
+		<br>
+		<hr>
+		
+		<h3 id="javascript"><strong>C) JavaScript</strong> - <a href="#toc">top</a></h3>
+		There are several javascript files. Let's see the list.
+		<br>
+		<br>
+		<strong>jQuery:</strong> jQuery library is being loaded from ajax.googleapis.com
+		<br>
+		<br>
+		<strong>Main Script - script.js:</strong> Contains the main functionality and options that can be configured. Let's take a look on the options.
+		<pre name="code" class="javascript">
+		var o = {
+			//Blog Settings
+			blog: {
+				posts_per_page: 3, //post to be loaded/shown per page
+				masonry: {
+					enabled: false, //enable (true) or disable(false) the masonry effect for blog
+					columns: 2, //masonry columns number
+					right_gap: '2.5%', //the gap between posts in percents
+					bottom_gap: 48 // if set to -1 right_gap will be used as bottom_gap
+				},
+				history: {
+					pagination: 'page', //deeplink value when paginating. Exp: #/blog/page/2
+					category: 'category', //deeplink value when a category is loaded. Exp: #/blog/category/html
+					archives: 'archives', //deeplink value when an archive is loaded. Exp: #/blog/archives/july
+					post: 'post' //deeplink value when post is loaded. Exp: #/blog/post/designing-a-website-in-browser
+				}
+			},
+
+			// Project/Works Gallery Settings
+			works: {
+				load_more_limit: 3, //number of items to be loaded when "[   +   ]" (load more) is requested
+				masonry: {
+					enabled: false, //enable (true) or disable(false) the masonry effect for blog
+					columns: 1, //masonry columns number
+					right_gap: '1%', //the gap between posts in percents
+					bottom_gap: -1 //if set to -1 right_gap will be used as bottom_gap
+				},
+				history: {
+					category: 'category', //deeplink value when a category is filtered. Exp: #/works/category/other
+					post: 'project' //deeplink value when project is loaded. Exp: #/works/project/year-of-2013
+				},
+				project_slider: {
+					animation: 'slide', //transition type. 'fade', 'slide'
+					slideshowSpeed: 6000, //slideshow speed in milliseconds
+					animationSpeed: 600, //transition speed
+					easing: 'easeInOutExpo' //transition easing
+				}
+			},
+
+			//Global/Page Animation Timing and Easing Settings
+			page_scroll_speed: 600, //speed of page scroll animation
+			page_scroll_easing: 'easeInOutExpo', //easing of page scroll animation 
+			page_switch_speed: 600, //page switch animation speed
+			page_switch_easing: 'easeOutExpo', //page switch animation easing
+			submenu_animation_speed: 300, //submenu animation speed
+			submenu_animation_easing: 'easeOutQuad', //submenu animation easing
+			filter_animateion_speed: 600, //animation speed when works/projects gallery is filtered
+			filter_animateion_easing: 'easeInOutQuad', //animation easing when works/projects gallery is filtered
+			animations_speed: 600, //global animation speed
+			animations_easing: 'easeInOutQuart', //global animation easing
+
+			use_logo_in_dynamic_naviagtion: true, //whether or not to use the logo in the dynamic naviagtion
+			use_deeplink: true //enable or disable deeplink functionality
+		};
+		</pre>
+		<br>
+		<strong>Classes - classes.js:</strong> This contains all the classes/methods that heav been used for sections functionality, data loading, page switching, etc... although you may customized most necessary options through the Main Script (script.js).
+		<br>
+		<br>
+		<strong>Media Box - media.box.jquery.js:</strong> This is the Media Box module javascript which is basicaly a lightbox plugin made for this template. And again, it has some settings that can be customized from the Main Script.
+		<br>
+		<br>
+		<strong>FlexSlider - jquery.flexslider-min.js:</strong> Flex Slider is a great third party plugin, you can find more info <a href="http://www.woothemes.com/flexslider/">here</a>.
+		<br>
+		<br>
+		<strong>Easing Functions - jquery.easing.1.3.js:</strong> This file contains all the easing functions for animations. You might chech the plugin's page <a href="http://gsgd.co.uk/sandbox/jquery/easing/">here</a>.
+		<br>
+		<br>
+		<br>
+	  	<hr>
+		
+		
+		<h3 id="php"><strong>E) PHP Code Explanation</strong> - <a href="#toc">top</a>		</h3>
+		Everything is explained in the Contacts page template structure <a href="#php-expl">here</a>.
+		<br>
+		<br>
+		<br>
+		<hr>
+		<p>Once again, thank you so much for purchasing this theme. As I said at the beginning, I'd be glad to help you if you have any questions relating to this theme. No guarantees, but I'll do my best to assist. If you have a more general question relating to the themes on ThemeForest, you might consider visiting the forums and asking your question in the "Item Discussion" section.</p>
+		
+		<p class="append-bottom alt large"><strong>Baklach</strong></p>
+		<p><a href="#toc">Go To Table of Contents</a></p>
+		
+		<hr class="space">
+	</div><!-- end div .container -->
+</body>
+
+<link type="text/css" rel="stylesheet" href="s_highlighter/css/SyntaxHighlighter.css">
+</link>
+<script language="javascript" src="s_highlighter/js/shCore.js"></script>
+<script language="javascript" src="s_highlighter/js/shBrushXml.js"></script>
+<script language="javascript" src="s_highlighter/js/shBrushCss.js"></script>
+<script language="javascript" src="s_highlighter/js/shBrushJScript.js"></script>
+<script language="javascript" src="s_highlighter/js/shBrushPhp.js"></script>
+<script language="javascript">
+window.onload = function () {
+    dp.SyntaxHighlighter.ClipboardSwf = 's_highlighter/js/clipboard.swf';
+    dp.SyntaxHighlighter.HighlightAll('code');
+}
+</script>
+</html>
