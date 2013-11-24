@@ -75,8 +75,8 @@
 		}
 
 		$conn = open_database_connection($config);
-		$add_statment = $conn->prepare("INSERT INTO Users(email, keywords, location, name, phone, foi, svc, notes) 
-						VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
+		$add_statment = $conn->prepare("INSERT INTO Users(email, keywords, location, name, phone, foi, notes) 
+						VALUES(?, ?, ?, ?, ?, ?, ?)");
 		$email_check = $conn->prepare("SELECT COUNT(*) AS count FROM `Users` WHERE email = '?'");
 
 		$email_check_result = $email_check->execute(array($data["email"]));
@@ -105,11 +105,10 @@
 			$add_statment->execute(array(
 											htmlspecialchars($data["email"]),
 											implode(",", $user_keyword_data),
-											htmlspecialchars("98020"),
+											htmlspecialchars($data["zip"]),
 											htmlspecialchars($data["name"]),
 											htmlspecialchars($data["phone"]),
 											htmlspecialchars($data["foi"]),
-											htmlspecialchars($data["svc"]),
 											htmlspecialchars($data["message"])
 								   ));
 
@@ -125,7 +124,7 @@
 
 			$to = $send_copy_to_sender ? $receiver . ', ' . $sender : $receiver;
 
-			if(true || mail($to, $subject, $complete_message, $headers))
+			if(mail($to, $subject, $complete_message, $headers))
 			{
 				success($validation_messages['success']);
 			}
