@@ -1,7 +1,5 @@
 <?php
-require_once('private.config.php');
-
-function open_database_connection() {
+function open_database_connection($config) {
     $conn = new mysqli(
         $config['database_host'],
         $config['database_username'],
