@@ -163,13 +163,19 @@
 
 		if(mail($to, $subject, $complete_message, $headers))
 		{
+            $loc = getLnt(htmlspecialchars($data['zip']));
+            $lat = $loc['lat'];
+            $lon = $loc['lng'];
+            
 			$test_user = new Person(
 			    $data["name"],
 			    $data["email"],
 			    $data["phone"],
 			    $data["zip"], // location
 			    $data["foi"],
-			    $user_keyword_data); // keywords
+			    $user_keyword_data,  // keywords
+                $lat,
+                $lon);
 
 			$mentor_matches = generate_single_user_matches_html(
 			    $config, 
