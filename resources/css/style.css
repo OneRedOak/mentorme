@@ -3068,7 +3068,7 @@ p.drop-cap.round:first-letter {
 .mentor {
 	display: block;
 	float: left;
-	padding: 12px;
+	padding: 24px 12px;
 	margin-bottom: 12px;
     margin-right:24px;
 	border: 1px solid #ededed;
@@ -3096,4 +3096,17 @@ p.drop-cap.round:first-letter {
 .mentor:focus {
 	border-color: #ccc;
 	
-}/* MENTOR DATA OUTPUT - END */
+}
+
+.mentor img {
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-o-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.mentors:first-child {
+	
+}
+
+/* MENTOR DATA OUTPUT - END */
