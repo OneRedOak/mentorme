@@ -19,4 +19,9 @@ November 22 - 24, 2013
     -   Maxwell McCaulou - Graphics and Logos
     -   Oscar Marczynski - Video and Media
 
-    
+## Additional Credits
+
+-   "ilone" - HTML/CSS template
+-   Flexslider
+-   jQuery
+-   Google Maps API
