@@ -1,6 +1,8 @@
-# mentorme
+# MentorMe
 
 Startup Weekend EDU Competition - MentorMe Website
+
+November 22 - 24, 2013
 
 ## Contributors
 
