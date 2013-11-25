@@ -846,7 +846,7 @@ function isIE()
 
 
 
-
+/*
 function imgCanvas(__callback)
 {
 	var loaded = 0;
@@ -882,7 +882,8 @@ function imgCanvas(__callback)
 			ctx.drawImage(r_img, 0, 0);
 
 			var imgData = ctx.getImageData( 0, 0, canvas.width, canvas.height );
-
+            
+            
 			for (var i = 0; i < imgData.data.length; i += 4) 
 			{
 					imgData.data[i] = imgData.data[i+1] = imgData.data[i+2] = desaturate(imgData.data[i],imgData.data[i+1], imgData.data[i+2]);
@@ -912,7 +913,7 @@ function imgCanvas(__callback)
 
 function desaturate(r, g, b)
 {
-	return parseInt((0.2125 * r) + (0.7154 * g) + (0.0721 * b), 10);
+    return parseInt((0.2125 * r) + (0.7154 * g) + (0.0721 * b), 10);
 }
 
 if(o.image_saturation < 1 && (isIE() > 8 || isIE() < 0) )
@@ -939,3 +940,4 @@ if(o.image_saturation < 1 && (isIE() > 8 || isIE() < 0) )
 		});
 	});
 }
+*/

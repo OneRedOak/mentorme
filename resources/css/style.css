@@ -498,7 +498,7 @@ For IE8
 
 .logo-container {
 	float: left;
-	padding: 45px 0;
+	padding: 52px 0 38px;
 }
 
 .logo-container a {
@@ -527,7 +527,7 @@ For IE8
 	border-left: 1px solid #ededed;
 	line-height: 9px;
 	padding-bottom: 4px;
-	margin-top: 25px;
+	margin-top: 20px;
 
 	color: #ccc;
 }
